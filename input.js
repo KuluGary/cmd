@@ -1,9 +1,11 @@
 //GETTING THE INPUT
 var input = document.getElementById("terminal");
 var commands = document.getElementById("commands");
+var arrayLog = ["log001", "log002", "log003", "log004", "log005", "log006", "log007", "log008"]
+
 input.addEventListener("keyup", function (e) {
 
-    //SWITCH TO CHOOSE DEPENGING ON INPUT    
+    //IFs TO CHOOSE DEPENGING ON INPUT    
 
     if (e.keyCode === 13 && input.value == 1) {
         logs(e);
@@ -17,70 +19,25 @@ input.addEventListener("keyup", function (e) {
         quit(e);
     }
 
-    if (e.keyCode === 13 && input.value == "log001") {
-        document.getElementById('log001').style.display = 'block'
-        document.getElementsByClassName("close")[0].onclick = function () {
-            document.getElementById('log001').style.display = 'none';
-        }
+    if (e.keyCode === 13 && arrayLog.includes(input.value)){
+                document.getElementById(input.value).style.display = 'block'
+                document.getElementsByClassName("close")[arrayLog.indexOf(input.value)].onclick = function () {
+                    document.getElementById(input.value).style.display = 'none';
+                }
+            }
+
+    else if (e.keyCode === 13) {
+        input.value = "";
     }
 
-    if (e.keyCode === 13 && input.value == "log002") {
-        document.getElementById('log002').style.display = 'block'
-        document.getElementsByClassName("close")[1].onclick = function () {
-            document.getElementById('log002').style.display = 'none';
-        }
-    }
 
-    if (e.keyCode === 13 && input.value == "log003") {
-        document.getElementById('log003').style.display = 'block'
-        document.getElementsByClassName("close")[2].onclick = function () {
-            document.getElementById('log003').style.display = 'none';
-        }
-    }
-
-    if (e.keyCode === 13 && input.value == "log004") {
-        document.getElementById('log004').style.display = 'block'
-        document.getElementsByClassName("close")[3].onclick = function () {
-            document.getElementById('log004').style.display = 'none';
-        }
-    }
-
-    if (e.keyCode === 13 && input.value == "log005") {
-        document.getElementById('log005').style.display = 'block'
-        document.getElementsByClassName("close")[4].onclick = function () {
-            document.getElementById('log005').style.display = 'none';
-        }
-    }
-
-    if (e.keyCode === 13 && input.value == "log006") {
-        document.getElementById('log006').style.display = 'block'
-        document.getElementsByClassName("close")[5].onclick = function () {
-            document.getElementById('log006').style.display = 'none';
-        }
-    }
-
-    if (e.keyCode === 13 && input.value == "log007") {
-        document.getElementById('log007').style.display = 'block'
-        document.getElementsByClassName("close")[6].onclick = function () {
-            document.getElementById('log007').style.display = 'none';
-        }
-    }
-
-    if (e.keyCode === 13 && input.value == "log008") {
-        document.getElementById('log008').style.display = 'block'
-        document.getElementsByClassName("close")[7].onclick = function () {
-            document.getElementById('log008').style.display = 'none';
-        }
-    }
-}
 });
-
 
 function logs(e) {
     //FUNCTION ACTIVATED WHEN PRESSING 1
-    var paragraph = document.getElementById("logs");
+    var paragraph = document.getElementById("logLists");
     paragraph.setAttribute('style', 'white-space: pre;');
-
+    
     paragraph.textContent += "\r\nC:\\> 1\r\n\r\n";
     paragraph.textContent += "Access granted. . .\r\n";
     paragraph.textContent += "\r\n"
@@ -103,7 +60,7 @@ function logs(e) {
 
 function archive(e) {
     //FUNTION ACTIVATED WHEN PRESSING 2
-    var paragraph = document.getElementById("logs");
+    var paragraph = document.getElementById("logLists");
     paragraph.setAttribute('style', 'white-space: pre;');
 
     paragraph.textContent += "\r\nC:\\> 2\r\n\r\n";
@@ -123,11 +80,10 @@ function archive(e) {
 
 function quit(e) {
     //FUNTION ACTIVATED WHEN PRESSING 0
-    var paragraph = document.getElementById("logs");
     paragraph.setAttribute('style', 'white-space: pre;');
 
     paragraph.textContent = "";
     
     //CLEAR THE INPUT BOX
     input.value = "";
-}
+ }
